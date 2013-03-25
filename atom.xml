@@ -4,7 +4,7 @@
   <title><![CDATA[My Footprint]]></title>
   <link href="http://firecodeman.github.com/atom.xml" rel="self"/>
   <link href="http://firecodeman.github.com/"/>
-  <updated>2013-03-25T22:56:06+08:00</updated>
+  <updated>2013-03-25T23:15:04+08:00</updated>
   <id>http://firecodeman.github.com/</id>
   <author>
     <name><![CDATA[Xiaofei Wang]]></name>
@@ -12,5 +12,14 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[千里之行始于足下]]></title>
+    <link href="http://firecodeman.github.com/blog/2013/03/25/qian-li-zhi-xing-shi-yu-zu-xia/"/>
+    <updated>2013-03-25T23:01:00+08:00</updated>
+    <id>http://firecodeman.github.com/blog/2013/03/25/qian-li-zhi-xing-shi-yu-zu-xia</id>
+    <content type="html"><![CDATA[<p>工欲善其事，必先利其器。</p>
+]]></content>
+  </entry>
   
 </feed>
