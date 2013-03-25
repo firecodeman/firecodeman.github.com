@@ -4,7 +4,7 @@
   <title><![CDATA[My Footprint]]></title>
   <link href="http://firecodeman.github.com/atom.xml" rel="self"/>
   <link href="http://firecodeman.github.com/"/>
-  <updated>2013-03-25T23:15:04+08:00</updated>
+  <updated>2013-03-25T23:49:40+08:00</updated>
   <id>http://firecodeman.github.com/</id>
   <author>
     <name><![CDATA[Xiaofei Wang]]></name>
@@ -12,6 +12,117 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[build and learn hadoop cdh4-2.0.0_4.1.2]]></title>
+    <link href="http://firecodeman.github.com/blog/2013/03/25/build-and-learn-hadoop-cdh4-2-dot-0-0-4-dot-1-2/"/>
+    <updated>2013-03-25T23:22:00+08:00</updated>
+    <id>http://firecodeman.github.com/blog/2013/03/25/build-and-learn-hadoop-cdh4-2-dot-0-0-4-dot-1-2</id>
+    <content type="html"><![CDATA[<p>1.git clone</p>
+
+<figure class='code'><figcaption><span>git clone </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>git clone git://github.com/cloudera/hadoop-common.git hadoop-common</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2.switch branch</p>
+
+<figure class='code'><figcaption><span>switch branch </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd hadoop-common
+</span><span class='line'>git branch 
+</span><span class='line'>git checkout cdh4-2.0.0_4.1.2</span></code></pre></td></tr></table></div></figure>
+
+
+<p>3.mvn package</p>
+
+<figure class='code'><figcaption><span>mvn package </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>mvn package -Pdist -DskipTests -Dtar</span></code></pre></td></tr></table></div></figure>
+
+
+<p>4.dist</p>
+
+<figure class='code'><figcaption><span>dist </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cp hadoop-dist/target/hadoop-2.0.0-cdh4.1.2-SNAPSHOT.tar.gz &lt;dist_path>
+</span><span class='line'>cd &lt;dist_path>
+</span><span class='line'>tar -xvf hadoop-2.0.0-cdh4.1.2-SNAPSHOT.tar.gz
+</span><span class='line'>chown -R hadoop:hadoop hadoop-2.0.0-cdh4.1.2-SNAPSHOT
+</span><span class='line'>cd hadoop-2.0.0-cdh4.1.2-SNAPSHOT</span></code></pre></td></tr></table></div></figure>
+
+
+<p>5.ssh空密码登录</p>
+
+<figure class='code'><figcaption><span>rsa config </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>su - hadoop
+</span><span class='line'>ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+</span><span class='line'>ssh-copy-id hadoop@127.0.0.1 如果是本机则执行 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys （可能不好使）
+</span><span class='line'>chmod 600 ~/.ssh/id_rsa  </span></code></pre></td></tr></table></div></figure>
+
+
+<ol>
+<li>format &amp;&amp; start name node</li>
+</ol>
+
+
+<figure class='code'><figcaption><span>format && start name node </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>./bin/hdfs namenode -format
+</span><span class='line'>./bin/hdfs namenode</span></code></pre></td></tr></table></div></figure>
+
+
+<p>7.start datanode</p>
+
+<figure class='code'><figcaption><span>start datanode </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>./bin/hdfs datanode
+</span><span class='line'>hadoop fs -ls /</span></code></pre></td></tr></table></div></figure>
+
+
+<p>8.export PATH</p>
+
+<figure class='code'><figcaption><span>export PATH </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>cd &lt;hadoop_path>
+</span><span class='line'>echo 'export HADOOP_HOME='`pwd` >> ~/.bashrc
+</span><span class='line'>echo 'export PATH=$PATH:$HADOOP_HOME/bin' >> ~/.bashrc</span></code></pre></td></tr></table></div></figure>
+
+
+<p>9.WEB URL
+http://localhost:8088/cluster</p>
+
+<p>10.enable remote debug</p>
+
+<figure class='code'><figcaption><span>enable remote debug </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>vim etc/hadoop/hadoop-env.sh
+</span><span class='line'>export HADOOP_NAMENODE_OPTS=$HADOOP_NAMENODE_OPTS" -Xdebug -Xrunjdwp:transport=dt_socket,server=y,address=8765"</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<blockquote><p>Debug As -> Debug Configrations&#8230; ->Remote Java Application-New<br/>Name:hadoop-main<br/>Source:add->Archive->Hadooop 3.0.0xxx.jar<br/>Conntcion Type:  Standard(Sockert Attach)<br/>Host:localhost<br/>Port:8765<br/>Allow Termination remote VM:checked</p><p>如果报Connection refused 可能是Eclipse使用代理的原因，可以通过 Eclipse下选择window->Preferences->network connections,active provider中选择direct而不要选择manual,保存即可.</p><footer><strong>http://www.eclipsezone.com/eclipse/forums/t53459.html Remote Debugging with Eclipse</strong></footer></blockquote>
+
+
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[千里之行始于足下]]></title>

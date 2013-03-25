@@ -5,8 +5,14 @@
         <lastmod>2013-03-25T23:14:53+08:00</lastmod>
     </url>
     <url>
+        <loc>
+            http://firecodeman.github.com/blog/2013/03/25/build-and-learn-hadoop-cdh4-2-dot-0-0-4-dot-1-2/
+        </loc>
+        <lastmod>2013-03-25T23:49:32+08:00</lastmod>
+    </url>
+    <url>
         <loc>http://firecodeman.github.com/</loc>
-        <lastmod>2013-03-25T23:14:53+08:00</lastmod>
+        <lastmod>2013-03-25T23:49:32+08:00</lastmod>
     </url>
     <url>
         <loc>http://firecodeman.github.com/robots.txt</loc>
@@ -14,6 +20,6 @@
     </url>
     <url>
         <loc>http://firecodeman.github.com/blog/archives/</loc>
-        <lastmod>2013-03-25T23:14:53+08:00</lastmod>
+        <lastmod>2013-03-25T23:49:32+08:00</lastmod>
     </url>
 </urlset>
